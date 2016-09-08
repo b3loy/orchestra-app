@@ -92,10 +92,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
     </script>
 
-    <link rel="import" href="/src/my-app.html">
+    <link rel="import" href="/src/orchestra-app.html">
 
     <!-- Slideshow -->
-    <link rel="import" href="src/my-view0.html">
+    <link rel="import" href="/src/orchestra-slideshow.html">
 
     <style>
       body {
@@ -108,28 +108,28 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </style>
   </head>
   <body>
-    <my-view0 id="slides" style="display:none;"></my-view0>
-    <my-app id="app"></my-app>
+    <orchestra-slideshow id="slides" ></orchestra-slideshow>
+    <orchestra-app id="app"></orchestra-app>
     <!-- Built with love using Polymer Starter Kit -->
 
     <script src="src/js/ifvisible/src/ifvisible.js"></script>
     <script type="text/javascript">
-      ifvisible.setIdleDuration(10);
+      // ifvisible.setIdleDuration(10);
       
-      ifvisible.idle(function(){
-        // document.body.style.opacity = 0.5;
-        document.getElementById('app').style.display = "none";
-        document.getElementById('slides').style.display = "block";
+      // ifvisible.idle(function(){
+      //   // document.body.style.opacity = 0.5;
+      //   document.getElementById('app').style.display = "none";
+      //   document.getElementById('slides').style.display = "block";
 
-        });
+      //   });
 
 
-      ifvisible.wakeup(function(){
-        // document.body.style.opacity = 1;
-        document.getElementById('app').style.display = "block";
-        document.getElementById('slides').style.display = "none";
+      // ifvisible.wakeup(function(){
+      //   // document.body.style.opacity = 1;
+      //   document.getElementById('app').style.display = "block";
+      //   document.getElementById('slides').style.display = "none";
 
-        });
+      //   });
     </script>
   </body>
 </html>
