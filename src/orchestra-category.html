@@ -26,7 +26,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <paper-tabs selected="[[page]]">
       <template is="dom-repeat" items="[[sections]]" as="section">
         <paper-tab>
-          <a href="#[[section]]">[[section]]</a>
+          <a href="/[[section]]">[[section]]</a>
         </paper-tab>
       </template>
     </paper-tabs>
@@ -59,6 +59,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           }
         }
       },
+
+      _computeSelectedTab: function(sections, section) {
+      return sections.indexOf(section);
+      }
 
 
     });
