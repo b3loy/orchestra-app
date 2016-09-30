@@ -97,6 +97,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <!-- Slideshow -->
     <link rel="import" href="/src/orchestra-slideshow.html">
 
+
     <style>
       body {
         margin: 0;
@@ -105,31 +106,52 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         min-height: 100vh;
         background-color: #eeeeee;
       }
+
+      .hide {
+        display: none;
+      }
+
+      .display                        {
+        display: block;
+      }
     </style>
   </head>
   <body>
-    <orchestra-slideshow id="slides" ></orchestra-slideshow>
-    <orchestra-app id="app"></orchestra-app>
+    <orchestra-slideshow id="slides" class="hide"></orchestra-slideshow>
+    <orchestra-app id="app" class="display"></orchestra-app>
     <!-- Built with love using Polymer Starter Kit -->
 
     <script src="src/js/ifvisible/src/ifvisible.js"></script>
     <script type="text/javascript">
-      // ifvisible.setIdleDuration(10);
+
+      ifvisible.setIdleDuration(10);
+
+      var orchestrasli = document.getElementById('slides');
+      var orchestraapp = document.getElementById('app');
       
-      // ifvisible.idle(function(){
-      //   // document.body.style.opacity = 0.5;
-      //   document.getElementById('app').style.display = "none";
-      //   document.getElementById('slides').style.display = "block";
+      ifvisible.on("idle", function(){
+        if ( orchestrasli.className === "hide") {
+          orchestrasli.className = "display";
+          orchestraapp.className = "hide";
+        } else {
+          orchestrasli.className = "hide";
+          orchestraapp.className = "display";
+        }
+        // document.getElementById('app').style.display = "none";
+        // document.getElementById('slides').style.display = "block";
 
-      //   });
+        });
 
+      ifvisible.wakeup(function(){
+        if ( orchestrasli.className === "display") {
+          orchestrasli.className = "hide";
+          orchestraapp.className = "display";
+        } else {
+          orchestrasli.className = "display";
+          orchestraapp.className = "hide";
+        }
 
-      // ifvisible.wakeup(function(){
-      //   // document.body.style.opacity = 1;
-      //   document.getElementById('app').style.display = "block";
-      //   document.getElementById('slides').style.display = "none";
-
-      //   });
+        });
     </script>
   </body>
 </html>
