@@ -142,7 +142,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         });
 
-      ifvisible.wakeup(function(){
+      ifvisible.on("wakeup", function(){
         if ( orchestrasli.className === "display") {
           orchestrasli.className = "hide";
           orchestraapp.className = "display";

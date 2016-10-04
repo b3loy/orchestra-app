@@ -28,7 +28,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="orchestra-category.html">
 <dom-module id="orchestra-app">
   <template>
-    <style>
+    <style include="shared-styles">
       :host {
         --app-primary-color: #4285f4;
         --app-secondary-color: black;
@@ -74,11 +74,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         @apply(--layout-horizontal);
         @apply(--layout-center-center);
         text-decoration: none;
-        color: #000;
+        /*color: #000;*/
+        color: #fff;
+        text-transform: uppercase;
       }
 
       paper-tab::shadow paper-ripple {
-        color: #1266f1;
+        color: #0D47A1;
       }
 
       paper-tabs::shadow #selectionBar {
@@ -91,19 +93,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       paper-tabs {
-        --paper-tabs-selection-bar-color: #0288D1;
-        background-color: #e2edfd;
+        /*--paper-tabs-selection-bar-color: #0288D1;*/
+        --paper-tabs-selection-bar-color: #FFEB3B;
+        /*background-color: #e2edfd;*/
+        background-color: #1565C0;
         color: #000;
         height: 62px;
         width: 100%;
+        box-shadow: 0px 5px 6px -3px rgba(0, 0, 0, 0.4);
       }
 
-      .title {
-        font-size: 36px;
-        margin-left: 30px;
-        font-weight: 300;
-        letter-spacing: 1px;
-      }
+
 
 
 
@@ -136,10 +136,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <app-header effects="waterfall" style="height: 160px;">
 
           <app-toolbar style="height: 160px;">
-            <div class="title">Juilliard Orchestra Projects</div>
+            <div class="title">Orchestra Projects</span></div>
           </app-toolbar>
 
-            <paper-tabs selected="0">
+            <paper-tabs selected="0" scrollable fit-container>
               <paper-tab link><a name="view1" href="/view1" class="link" tabindex="-1">All Projects</a></paper-tab>
               <paper-tab link><a name="view2" href="/view2" class="link" tabindex="-1">Juilliard Orchestra</a></paper-tab>
               <paper-tab link><a name="view3" href="/view3" class="link" tabindex="-1">Placement Audition</a></paper-tab>
@@ -205,5 +205,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         this.page = 'view404';
       }
     });
+
+
   </script>
 </dom-module>

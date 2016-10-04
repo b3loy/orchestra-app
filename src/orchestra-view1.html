@@ -21,6 +21,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         /*padding: 14px;*/
       }
+
+      .grid ul {
+        padding: 0;
+      }
+
+      .grid ul li {
+        list-style: none;
+      }
     </style>
 
     <iron-ajax
@@ -33,48 +41,52 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </iron-ajax>
 
   <div class="grid">
-    <template is="dom-repeat" items="[[ajaxResponse]]">
-      <div class="layout vertical" id="layout">
-        <div class="layout horizontal" style="padding:20px; background-color:#fff; opacity: .9;">
-            <div class="contentTitle" style="padding: 34px; border-right: 2px dashed #fafafa;">
-              <h1>[[item.title]]</h1>
-              <em>[[item.field_orchestra_location]]</em>
-              <p>[[item.field_orchestra_subtitle]]</p>
+    <ul>
+      <template is="dom-repeat" items="[[ajaxResponse]]">
+        <li>
+          <div class="layout vertical" id="layout">
+            <div class="layout horizontal" style="padding:20px; background-color:#fff; opacity: .9; border-bottom: 1px solid #e0e0e0;">
+                <div class="contentTitle" style="padding: 34px; border-right: 2px dashed #fafafa;">
+                  <h1>[[item.title]]</h1>
+                  <em>[[item.field_orchestra_location]]</em>
+                  <p>[[item.field_orchestra_subtitle]]</p>
+                </div>
+                <div class="layout horizontal center" style="padding: 24px; width:100%">
+                  <div class="layout horizontal mainContent" style="width:50%">
+                    <div class="mcontent">
+                      <h4>Music Available</h4>
+                     <!--  <div class="borderbtm"></div> -->
+                      <p>[[item.field_orchestra_music_available]]</p>
+                    </div>
+                    <div class="fcontent">
+                      <h4>First Rehearsal</h4>
+                     <!--  <div class="borderbtm"></div> -->
+                      <p>[[item.field_orchestra_first_rehearsal]]</p>
+                    </div>
+                    <div class="ccontent">
+                      <h4>Concert Date</h4>
+                      <!-- <div class="borderbtm"></div> -->
+                      <p>[[item.field_orchestra_concert_date]]</p>
+                    </div>
+                  </div>
+                  <div class="layout horizontal links center-justified" style="width:50%">
+                    <template is="dom-if" if="{{item.field_or_rehearsal_schedule.length}}">
+                      <r-Schedule item="{{item.field_or_rehearsal_schedule}}"></r-Schedule>
+                    </template>
+                    <template is="dom-if" if="{{item.field_or_seating_roster.length}}">
+                      <s-Roster item="{{item.field_or_seating_roster}}"></s-Roster>
+                    </template>
+                    <template is="dom-if" if="{{item.field_or_additional_info.length}}">
+                      <a-Info item="{{item.field_or_additional_info}}"></a-Info>
+                    </template>
+                  </div>
+                </div>               
             </div>
-            <div class="layout horizontal center" style="padding: 24px; width:100%">
-              <div class="layout horizontal mainContent" style="width:50%">
-                <div class="mcontent">
-                  <h4>Music Available</h4>
-                 <!--  <div class="borderbtm"></div> -->
-                  <p>[[item.field_orchestra_music_available]]</p>
-                </div>
-                <div class="fcontent">
-                  <h4>First Rehearsal</h4>
-                 <!--  <div class="borderbtm"></div> -->
-                  <p>[[item.field_orchestra_first_rehearsal]]</p>
-                </div>
-                <div class="ccontent">
-                  <h4>Concert Date</h4>
-                  <!-- <div class="borderbtm"></div> -->
-                  <p>[[item.field_orchestra_concert_date]]</p>
-                </div>
-              </div>
-              <div class="layout horizontal links center-justified" style="width:50%">
-                <template is="dom-if" if="{{item.field_or_rehearsal_schedule.length}}">
-                  <r-Schedule item="{{item.field_or_rehearsal_schedule}}"></r-Schedule>
-                </template>
-                <template is="dom-if" if="{{item.field_or_seating_roster.length}}">
-                  <s-Roster item="{{item.field_or_seating_roster}}"></s-Roster>
-                </template>
-                <template is="dom-if" if="{{item.field_or_additional_info.length}}">
-                  <a-Info item="{{item.field_or_additional_info}}"></a-Info>
-                </template>
-              </div>
-            </div>               
-        </div>
-      </div>
+          </div>
 
-      </template>
+        </li>
+        </template>
+      </ul>
     </div>
 
 
