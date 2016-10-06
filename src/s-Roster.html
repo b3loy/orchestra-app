@@ -1,0 +1,59 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-dialog/paper-dialog.html">
+
+
+<dom-module id="s-Roster">
+
+  <template>
+
+    <style include="iron-flex shared-styles">
+
+    </style>
+
+
+<!-- {{item}} testing!-->
+
+    <paper-button raised class="blue" on-click="toggleDialog">Seating Roster</paper-button>
+      <div class="content">
+        <paper-dialog id="dialog" entry-animation="slide-from-left-animation" exit-animation="slide-right-animation" with-backdrop style="width: 80%; height: 100%;">
+          <pdf-object file="[[item]]" style="width: 100%; height: 100%; display: block; padding: 0; margin-top: 0;" height="100%"></pdf-object>
+        </paper-dialog>
+      </div>
+
+
+
+  </template>
+
+  <script>
+
+    Polymer({
+
+      is: 's-Roster',
+
+      // properties: {
+      //   items: {
+      //     type: Object
+      //   }
+      // },
+
+
+      toggleDialog: function(){
+        this.$.dialog.open();
+      }
+
+    });
+
+  </script>
+
+</dom-module>
