@@ -13,7 +13,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="shared-styles.html">
 
-<dom-module id="orchestra-view1">
+<link rel="import" href="r-Schedule.html">
+<link rel="import" href="s-Roster.html">
+<link rel="import" href="a-Info.html">
+
+
+<dom-module id="orchestra-allprojects">
   <template>
     <style include="iron-flex shared-styles">
       :host {
@@ -22,19 +27,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         /*padding: 14px;*/
       }
 
-      .grid ul {
-        padding: 0;
-      }
 
-      .grid ul li {
-        list-style: none;
-      }
     </style>
 
     <iron-ajax
       id="ajax" 
       auto
       url="http://dev-jorchestra.pantheon.io/api/orchestra-projects"
+      method="get"
       handle-as="json"
       last-response="{{ajaxResponse}}"
       on-response="_onResponse">
@@ -95,7 +95,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   <script>
     Polymer({
-      is: 'orchestra-view1'
+      is: 'orchestra-allprojects'
     });
   </script>
 </dom-module>

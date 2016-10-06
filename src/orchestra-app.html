@@ -22,10 +22,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
 <link rel="import" href="../bower_components/paper-toolbar/paper-toolbar.html">
-<!-- <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html"> -->
 
-<link rel="import" href="orchestra-icons.html">
-<link rel="import" href="orchestra-category.html">
+
 <dom-module id="orchestra-app">
   <template>
     <style include="shared-styles">
@@ -40,6 +38,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         color: #fff;
         /*background-color: var(--app-primary-color);*/
         background-color: #1565C0;
+        /*margin-bottom: 60px;*/
       }
       app-header paper-icon-button {
         --paper-icon-button-ink-color: white;
@@ -77,6 +76,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         /*color: #000;*/
         color: #fff;
         text-transform: uppercase;
+        letter-spacing: 1px;
       }
 
       paper-tab::shadow paper-ripple {
@@ -103,12 +103,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         box-shadow: 0px 5px 6px -3px rgba(0, 0, 0, 0.4);
       }
 
+      .title {
+        font-size: 45px;
+        margin-left: 30px;
+        font-weight: 300;
+        letter-spacing: 1px;
+      }
 
-
-
-
-      
-
+      iron-pages {
+        margin-top: 62px;
+      }
 
     </style>
 
@@ -140,8 +144,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           </app-toolbar>
 
             <paper-tabs selected="0" scrollable fit-container>
-              <paper-tab link><a name="view1" href="/view1" class="link" tabindex="-1">All Projects</a></paper-tab>
-              <paper-tab link><a name="view2" href="/view2" class="link" tabindex="-1">Juilliard Orchestra</a></paper-tab>
+              <paper-tab link><a name="orchestra-allprojects" href="/orchestra-allprojects" class="link" tabindex="-1">All Projects</a></paper-tab>
+              <paper-tab link><a name="orchestra-jorchestra" href="/orchestra-jorchestra" class="link" tabindex="-1">Juilliard Orchestra</a></paper-tab>
               <paper-tab link><a name="view3" href="/view3" class="link" tabindex="-1">Placement Audition</a></paper-tab>
               <paper-tab link><a name="view4" href="/view4" class="link" tabindex="-1">AXIOM</a></paper-tab>
               <paper-tab link><a name="view5" href="/view5" class="link" tabindex="-1">New Juilliard Ensemble</a></paper-tab>
@@ -166,10 +170,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             attr-for-selected="name"
             fallback-selection="view404"
             role="main">
-          <orchestra-view1 name="view1"></my-view1>
-          <orchestra-view2 name="view2"></my-view2>
-          <orchestra-view3 name="view3"></my-view3>
-          <orchestra-view404 name="view404"></my-view404>
+          <orchestra-allprojects name="orchestra-allprojects"></orchestra-allprojects>
+          <orchestra-jorchestra name="orchestra-jorchestra"></orchestra-jorchestra>
+          <orchestra-view3 name="view3"></orchestra-view3>
+          <orchestra-view404 name="view404"></orchestra-view404>
         </iron-pages>
       </app-header-layout>
     </app-drawer-layout>
@@ -192,12 +196,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       ],
 
       _routePageChanged: function(page) {
-        this.page = page || 'view1';
+        this.page = page || 'orchestra-allprojects';
       },
 
       _pageChanged: function(page) {
         // Load page import on demand. Show 404 page if fails
-        var resolvedPageUrl = this.resolveUrl('orchestra-' + page + '.html');
+        var resolvedPageUrl = this.resolveUrl(page + '.html');
         this.importHref(resolvedPageUrl, null, this._showPage404, true);
       },
 
